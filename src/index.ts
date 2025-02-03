@@ -18,7 +18,6 @@ async function withLightClient(): Promise<PolkadotClient> {
     );
 }
 
-chalk
 async function main() {
     const program = new Command();
 
