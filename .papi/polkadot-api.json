@@ -9,6 +9,10 @@
     "custom": {
       "wsUrl": "ws://localhost:9944",
       "metadata": ".papi/metadata/custom.scale"
+    },
+    "wnd": {
+      "chain": "westend2",
+      "metadata": ".papi/metadata/wnd.scale"
     }
   }
 }

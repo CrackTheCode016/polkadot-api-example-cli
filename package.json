@@ -4,7 +4,7 @@
   "description": "A place to quickly get started with Polkadot API",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -13,11 +13,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@types/figlet": "^1.7.0",
     "tsc-watch": "^6.2.1",
     "typescript": "^5.7.2"
   },
   "dependencies": {
     "@polkadot-api/descriptors": "file:.papi/descriptors",
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "figlet": "^1.8.0",
     "polkadot-api": "^1.8.1"
   }
 }
