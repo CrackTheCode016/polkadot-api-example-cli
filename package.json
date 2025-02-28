@@ -1,7 +1,7 @@
 {
-  "name": "polkadot-api-ts-boilerplate",
+  "name": "youve-got-mail-web3",
   "version": "1.0.0",
-  "description": "A place to quickly get started with Polkadot API",
+  "description": "A simple CLI tool to watch for remarks on Polkadot network",
   "license": "ISC",
   "author": "",
   "type": "module",

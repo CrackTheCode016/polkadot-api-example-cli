@@ -23,9 +23,9 @@ async function withLightClient(): Promise<PolkadotClient> {
 
 async function main() {
     const program = new Command();
-    console.log(chalk.white.dim(figlet.textSync('Polkadot Account Watcher')))
+    console.log(chalk.white.dim(figlet.textSync("Web3 Mail Watcher")))
 
-    program.version('0.0.1').description('Polkadot Account Watcher - A simple CLI tool to watch for remarks on Polkadot network')
+    program.version('0.0.1').description('Web3 Mail Watcher - A simple CLI tool to watch for remarks on Polkadot network')
         .option('-a, --account <account>', 'Account to watch')
         .parse(process.argv);
 
