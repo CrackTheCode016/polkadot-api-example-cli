@@ -56,6 +56,7 @@ async function main() {
             }
         });
     } else {
+        // If the account is not provided, we exit
         console.error('Account is required');
         return;
     }
