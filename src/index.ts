@@ -50,7 +50,7 @@ async function main() {
             // If the hash matches, we play a sound and log the message - You got mail!
             if (`0x${calculatedHash}` == hash.asHex()) {
                 sound.play("youve-got-mail-sound.mp3")
-                console.log(chalk.black.bgRed(`You got mail!`));
+                console.log(chalk.black.bgRed(`You've got mail!`));
                 console.log(chalk.black.bgCyan("From:"), chalk.bold.whiteBright(sender.toString()));
                 console.log(chalk.black.bgBlue("Hash:"), chalk.bold.whiteBright(hash.asHex()));
             }
