@@ -10,7 +10,7 @@
     "build": "tsc",
     "start": "tsc && node ./dist/index.js",
     "start:hot": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/index.js\"",
-    "postinstall": "npx papi add assethub -n polkadot_asset_hub && npx papi",
+    "postinstall": "npx papi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
