@@ -29,69 +29,107 @@
     <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Polkadot API Typescript Boilerplate</h3>
+<h3 align="center"> Polkadot API Account Watcher</h3>
 
   <p align="center">
-    Quickly get started with experimenting with the Polkadot API.  Includes hot-reloading and a clean Typescript environment to work with.
+    This was built using the <a href="https://github.com/CrackTheCode016/polkadot-api-ts-boilerplate">Polkadot API Typescript Boilerplate <a/> 
     <br />
   </p>
 </div>
 
-<!-- GETTING STARTED -->
-## Getting Started
+A decentralized command-line application that monitors a user's account on the Polkadot relay chain for the `system.remarkWithEvent` extrinsic. When a remark addressed to the specified account is detected, the application plays the iconic "You've Got Mail!" sound byte.
 
-Getting started should be simple - simply `npm install`, and you're off to the races.
+## Features
 
-### Prerequisites
+- Monitors the Westend Test Network for `system.remarkWithEvent` extrinsics.
+- Uses a light client powered by [`smoldot`](https://github.com/smol-dot/smoldot) for efficient synchronization.
+- Detects remarks addressed to a specific account and plays a sound notification.
+- Displays the sender's account and the hash of the remark.
 
+## Prerequisites
 
-Be sure `npm` and `npx` is up to date and working:
+Before starting, ensure the following tools and dependencies are installed:
 
-  ```sh
-  npm install npm@latest -g
-  ```
+- `npm` (or an alternative package manager)
+- `node`
+- `git`
+- [Polkadot.js Browser Extension (wallet)](https://polkadot.js.org/extension/)
 
-### Installation
+Additionally, you will need an account with Westend tokens. Refer to the following resources for assistance:
 
-```sh
-npm install
-```
+- [Westend Faucet](https://faucet.polkadot.io/westend)
 
-<!-- USAGE EXAMPLES -->
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/CrackTheCode016/polkadot-api-example-cli --branch empty-cli
+    cd polkadot-api-example-cli
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
 ## Usage
 
-You can start a hot reloading server with `tsc-watch`, which will automatically apply your code changes live:
+1. Start the application and specify the account to monitor:
 
-```sh
-npm run start
-```
+    ```bash
+    npm start -- --account <account-address>
+    ```
 
-Alternatively, you can also build the project and run the files manually inside of `dist/`:
+    Example:
 
-```sh
-npm run build
-```
+    ```bash
+    npm start -- --account 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+    ```
 
-## Adding a custom chain
+2. The application will display the following output and start monitoring the specified account:
 
-If you want to add a custom chain, such as a local one, you need to first get the metadata for your chain. You can replace `ws://localhost:9944` with your node's appropriate URL:
+    ```
+     __        __   _    _____   __  __       _ _  __        __    _       _
+     \ \      / /__| |__|___ /  |  \/  | __ _(_) | \ \      / /_ _| |_ ___| |__   ___ _ __
+      \ \ /\ / / _ \ '_ \ |_ \  | |\/| |/ _` | | |  \ \ /\ / / _` | __/ __| '_ \ / _ \ '__|
+       \ V  V /  __/ |_) |__) | | |  | | (_| | | |   \ V  V / (_| | || (__| | | |  __/ |
+        \_/\_/ \___|_.__/____/  |_|  |_|\__,_|_|_|    \_/\_/ \__,_|\__\___|_| |_|\___|_|
 
-```sh
-npx papi add custom --wsUrl ws://localhost:9944
-```
+    Watching account: 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+    ```
 
-Then, make sure you are using the WebSocket client (`wsClient` or `withWebSocket(url)`) and your custom metadata:
+3. When a remark is detected, the application will play the "You've Got Mail!" sound and display the following:
 
-```ts
-// ...
-const wsClient = await withWebSocket("ws://localhost:9944");
-const dotApi = wsClient.getTypedApi(custom);
+    ```
+    You've got mail!
+    From: 5Cm8yiG45rqrpyV2zPLrbtr8efksrRuCXcqcB4xj8AejfcTB
+    Hash: 0xb6999c9082f5b1dede08b387404c9eb4eb2deee4781415dfa7edf08b87472050
+    ```
 
-// Then, you can make calls like this...
-const last_runtime_upgrade = await dotApi.query.System.LastRuntimeUpgrade.getValue();
-console.log(last_runtime_upgrade)
-// ...
-```
+## Testing the Application
+
+1. Navigate to the [PAPI Dev Console > Extrinsics](https://dev.papi.how/extrinsics#networkId=westend&endpoint=light-client).
+2. Select the `System` pallet and the `remark_with_event` call.
+3. Input a remark in the format `address+email`. For example, if monitoring `5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY`, input:
+
+    ```
+    5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY+email
+    ```
+
+4. Submit the extrinsic and sign it using the Polkadot.js browser wallet. The application will detect the remark and display the output.
+
+## Extending the Application
+
+This application can be extended in various ways, such as:
+
+- Implementing a chatroom using remarks.
+- Leveraging rollups on Polkadot to enhance functionality.
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
